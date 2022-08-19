@@ -1,0 +1,39 @@
+{
+  "name": "imageprocessingapi",
+  "version": "1.0.0",
+  "description": "Initialize your project.\r --npm init -y \r --npm i prettier\r --npm i eslint\r --npm i typescript\r ----\"build\":\"npx tsc\"\r ---npx tsc --init\r ------ \"target\": \"ES5\",\r ------ \"lib\": [\"ES6\",\"DOM\"],\r ------ \"module\": \"commonjs\",\r ------ \"outDir\": \"./dist\", \r ------ \"noImplicitAny\": true, \r ------",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .ts",
+    "prettier": "prettier  --write ./src ",
+    "build": "npx tsc",
+    "jasmine": "jasmine",
+    "test": "npm run build && npm run jasmine",
+    "start": "nodemon src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.22.0",
+    "express": "^4.18.1",
+    "jasmine": "^4.3.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "prettier": "^2.7.1",
+    "readimage": "^1.1.1",
+    "sharp": "^0.30.7",
+    "supertest": "^6.2.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jasmine": "^4.0.3",
+    "@types/node": "^18.7.3",
+    "@types/sharp": "^0.30.5",
+    "@types/supertest": "^2.0.12",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}

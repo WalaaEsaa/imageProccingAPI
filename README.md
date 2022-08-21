@@ -19,3 +19,6 @@ This project aims to give you a real-world scenario in which you would read and 
 |start the server & nodemon|	npm run start|
 |lint	|npm run lint|
 |prettier	|npm run prettier|
+
+##screenshot of running
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)

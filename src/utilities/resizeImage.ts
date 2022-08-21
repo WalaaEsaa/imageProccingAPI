@@ -2,10 +2,12 @@ import sharp from 'sharp';
 import fileSystem from 'fs';
 import path, { resolve } from 'path';
 
-export default async (name: string, width: number, height: number): Promise<{ response: string; reject: string }> => {
+export default async (name: string, width: number, height: number): Promise<{ response: string; reject: {msg:string}; inCash:string ;}> => {
+   
     try {
-        let pathIn = path.resolve('./', 'src', 'images', `${name}.jpg`);
-        let pathOut = path.resolve('./', 'src', 'imageResize');
+      
+        let pathIn = path.join(process.cwd(), `images/${name}.jpg`);
+        let pathOut = path.join(process.cwd(),  'imageResize');
         await sharp(pathIn)
             .resize(+width, +height)
             .extend({
@@ -15,15 +17,19 @@ export default async (name: string, width: number, height: number): Promise<{ re
                 right: 20,
                 background: '#e5e5e5'
             })
-            .toFile(path.resolve(`${pathOut}`, `${name}-${width}-${height}.jpg`));
+            .toFile(`${pathOut}/${name}-${width}-${height}.jpg`);
+                     
         return {
-            response: path.resolve(`${pathOut}`, `${name}-${width}-${height}.jpg`) as string,
-            reject: "error " as string
+            response:`${pathOut}/${name}-${width}-${height}.jpg` as string,
+            reject: {} as{msg: string},
+            inCash:  `${name}-${width}-${height}.jpg` as string
+            
         };
     } catch (reject) {
         return {
             response: "" as string,
-            reject: reject as string
+            inCash: `${name}-${width}-${height}.jpg` as string,
+            reject: reject as{msg: string}
         };
     }
 

@@ -4,14 +4,14 @@ import app from "../index";
 const request = supertest(app);
 
 
-describe("test input image data", () => {
-    it('gets the path of image route', async () => {
-        const response = await request.get('/image');
+describe("test end point", () => {
+    it('test main route', async () => {
+        const response = await request.get('/api');
         expect(response.status).toBe(200);
 
     });
 
-    it("Test Image data input", async () => {
+    it("Test Image route", async () => {
         const name = "img1";
         const width = "200";
         const height = "200";

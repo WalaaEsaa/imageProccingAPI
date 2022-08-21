@@ -39,41 +39,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var sharp_1 = __importDefault(require("sharp"));
 var path_1 = __importDefault(require("path"));
-exports.default = (function (name, width, height) { return __awaiter(void 0, void 0, void 0, function () {
-    var pathIn, pathOut, reject_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                pathIn = path_1.default.join(process.cwd(), "images/".concat(name, ".jpg"));
-                pathOut = path_1.default.join(process.cwd(), 'imageResize');
-                return [4 /*yield*/, (0, sharp_1.default)(pathIn)
-                        .resize(+width, +height)
-                        .extend({
-                        top: 20,
-                        bottom: 20,
-                        left: 20,
-                        right: 20,
-                        background: '#e5e5e5'
-                    })
-                        .toFile("".concat(pathOut, "/").concat(name, "-").concat(width, "-").concat(height, ".jpg"))];
-            case 1:
-                _a.sent();
-                return [2 /*return*/, {
-                        response: "".concat(pathOut, "/").concat(name, "-").concat(width, "-").concat(height, ".jpg"),
-                        reject: {},
-                        inCash: "".concat(name, "-").concat(width, "-").concat(height, ".jpg")
-                    }];
-            case 2:
-                reject_1 = _a.sent();
-                return [2 /*return*/, {
-                        response: "",
-                        inCash: "".concat(name, "-").concat(width, "-").concat(height, ".jpg"),
-                        reject: reject_1
-                    }];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
+var resizeImage_1 = __importDefault(require("../utilities/resizeImage"));
+var newCash = ['img1-200-200'];
+describe('Test image resize', function () {
+    it("should return Error If error in image name", function () { return __awaiter(void 0, void 0, void 0, function () {
+        var name, width, height, respond;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    name = "img1";
+                    width = 200;
+                    height = 200;
+                    return [4 /*yield*/, (0, resizeImage_1.default)("img1", 200, 200)];
+                case 1:
+                    respond = _a.sent();
+                    newCash.push(respond.inCash);
+                    expect(newCash).toContain('img1-200-200');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it("should return Error If no input or width or height <=0", function () { return __awaiter(void 0, void 0, void 0, function () {
+        var respond;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, resizeImage_1.default)("", 0, 200)];
+                case 1:
+                    respond = _a.sent();
+                    expect(respond.reject.msg).toBeFalsy();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it("should return new image path if it success!", function () { return __awaiter(void 0, void 0, void 0, function () {
+        var name, width, height, respond, outputFile;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    name = "img1";
+                    width = 200;
+                    height = 200;
+                    return [4 /*yield*/, (0, resizeImage_1.default)(name, width, height)];
+                case 1:
+                    respond = _a.sent();
+                    outputFile = path_1.default.join(process.cwd(), "/imageResize");
+                    expect(respond.response).toEqual("".concat(outputFile, "/").concat(name, "-").concat(width, "-").concat(height, ".jpg"));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});

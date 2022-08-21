@@ -21,12 +21,17 @@ This project aims to give you a real-world scenario in which you would read and 
 |prettier	|npm run prettier|
 
 ## screenshot of running
-run api 
+
+## run api 
+
 ![This is an image](https://github.com/WalaaEsaa/imageProccingAPI/blob/main/screenshot/npm_run_start.JPG)
 
-run test 
-![This is an image](https://github.com/WalaaEsaa/imageProccingAPI/blob/main/screenshot/test.JPG)
-
-run test 
 ![This is an image](https://github.com/WalaaEsaa/imageProccingAPI/blob/main/screenshot/resize_image.JPG)
+
+## run test 
+
+![This is an image](https://github.com/WalaaEsaa/imageProccingAPI/blob/main/screenshot/tes.JPG)
+
+ 
+
 

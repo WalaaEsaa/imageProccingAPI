@@ -1,5 +1,5 @@
-import sharp from "sharp";
 import fileSystem from "fs";
+import sharp from "sharp";
 import path, { resolve } from "path";
 
 export default async (
@@ -7,9 +7,12 @@ export default async (
   width: number,
   height: number
 ): Promise<{ response: string; reject: { msg: string }; inCash: string }> => {
+  let pathIn = path.join(process.cwd(), `images/${name}.jpg`);
+  let pathOut = path.join(process.cwd(), "imageResize");
+
+  if (!fileSystem.existsSync(pathOut)) fileSystem.mkdirSync(pathOut);
+
   try {
-    let pathIn = path.join(process.cwd(), `images/${name}.jpg`);
-    let pathOut = path.join(process.cwd(), "imageResize");
     await sharp(pathIn)
       .resize(+width, +height)
       .extend({

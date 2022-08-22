@@ -1,4 +1,5 @@
 import express from "express";
+import fileSystem from "fs";
 import { Router, Request, Response } from "express";
 import resizeImage from "./utilities/resizeImage";
 import * as dotenv from "dotenv";
@@ -10,14 +11,14 @@ dotenv.config();
 const app = express();
 const port = 3005;
 
-//root: URL has to be requested to get the image (get image from server)
+//root: the main root
 
-app.get("/api", (req, res) => {
-  res.send("hi ");
+app.get("/api", (req: Request, res: Response) => {
+  res.send(" hello to my server ");
 });
 
 //root: URL has to be requested to get the image (get image from server)
-app.get("/image", async (req, res): Promise<any> => {
+app.get("/image", async (req: Request, res: Response): Promise<any> => {
   const qName = req.query.name as string;
   const qWidth = req.query.width as string;
   const qHeight = req.query.height as string;

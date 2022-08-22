@@ -1,3 +1,4 @@
 {
-    "singlQuate":true
+    "singlQuate":true,
+    "lineSpace" :false
 }

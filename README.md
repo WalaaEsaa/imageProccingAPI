@@ -20,6 +20,14 @@ This project aims to give you a real-world scenario in which you would read and 
 |lint	|npm run lint|
 |prettier	|npm run prettier|
 
+## run main server
+
+http://localhost:3005/api
+
+## run image api
+
+http://localhost:3005/image?name=img1&width=200&height=600
+
 ## screenshot of running
 
 ## run api 

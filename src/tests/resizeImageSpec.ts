@@ -8,6 +8,7 @@ describe("Test image resize", () => {
     const name = "img1";
     const width = 200;
     const height = 200;
+    //let imgeExist =  expectAsync(path.join(process.cwd(),`${name}-${width}-${height}.jpg`));
     const respond = await resizeImage("img1", 200, 200);
     newCash.push(respond.inCash);
     expect(newCash).toContain("img1-200-200");
